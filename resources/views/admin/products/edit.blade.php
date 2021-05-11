@@ -6,7 +6,7 @@
 
 @section('main')
     <div class="container">
-        <form action="/admin/update" method="POST">
+        <form action="/admin/update/{{$productsData->id}}" method="POST">
             @csrf
            <div class="form-group">
                <label for="name">名稱:</label>

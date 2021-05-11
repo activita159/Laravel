@@ -31,6 +31,8 @@ Route::prefix('admin')->group(function () {
     Route::post('/store', 'ProductController@store');
         
     Route::get('/edit/{id}','ProductController@edit');
+
+    Route::post('/update/{id}', 'ProductController@update');
 });
 
 

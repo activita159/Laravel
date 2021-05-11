@@ -36,4 +36,11 @@ class ProductController extends Controller
         $productsData = Product::find($id);
         return view('admin.products.edit',compact('productsData'));
     }
+
+    public function update(Request $request,$id)
+    {
+        
+        Product::find($id)->update($request->except(['_token']));
+        return redirect('home');
+    }
 }
