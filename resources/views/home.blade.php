@@ -32,8 +32,7 @@
     <a href="/admin/create">新增</a>
     <table id="myDataTalbe"  class="display"  >
         <thead>
-            @foreach ($productsData as $item)
-                
+            
             <tr>
                 <th>#</th>
                 <th>名稱</th>
@@ -43,15 +42,18 @@
                 <th>ActionButton</th>
             </tr>
         </thead>
+        @foreach ($productsData as $item)
         <tbody>
             <tr>
                 <td>{{$item->id}}</td>
                 <td>{{$item->name}}</td>
                 <td>{{$item->img}}</td>
-                <td>{{$item->content}}</td>
-                <td>{{$item->price}}</td>
                 <td>
-                    <a href="">Edit</a>
+                    <textarea name="" id="" cols="25" rows="5" style="text-align: start">{{$item->content}}</textarea>
+                </td>
+                <td>NT$ {{$item->price}}</td>
+                <td>
+                    <a href="/admin/edit/{{$item->id}}">Edit</a>
                     <a href="">Delete</a>
                     
                 </td>

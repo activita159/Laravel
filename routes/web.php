@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ProductController@index');
 
 
 
@@ -32,7 +30,7 @@ Route::prefix('admin')->group(function () {
 
     Route::post('/store', 'ProductController@store');
         
-    
+    Route::get('/edit/{id}','ProductController@edit');
 });
 
 

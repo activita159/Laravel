@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public function index()
+    {
+        $productsData = Product::all();
+        // dd($productsData);
+        return view('front.products.index',compact('productsData'));
+    }
+
     public function create()
     {
         return view('admin.products.create');
@@ -21,6 +28,12 @@ class ProductController extends Controller
             'img'=>$request->img
         ]);
        
-        return redirect('home');
+        return redirect('/home');
+    }
+
+    public function edit($id)
+    {
+        $productsData = Product::find($id);
+        return view('admin.products.edit',compact('productsData'));
     }
 }
