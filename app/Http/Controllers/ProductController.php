@@ -49,12 +49,12 @@ class ProductController extends Controller
 
     public function update(Request $request,$id)
     {
-        $productData = $request->all();
-        if($request->hasfile('img')){
-            $file = $request ->file('img');
-            $path = $this->fileUpload($file,'product');
-            $productData['img']=$path;
-        }
+        // $productData = $request->all();
+        // if($request->hasfile('img')){
+        //     $file = $request ->file('img');
+        //     $path = $this->fileUpload($file,'product');
+        //     $productData['img']=$path;
+        // }
         Product::find($id)->update($request->except(['_token']));
         return redirect('/home');
     }

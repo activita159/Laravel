@@ -3,6 +3,12 @@
 
 @section('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+    <style>
+        tbody tr td{
+            word-break: break-all;
+        }
+    </style>
+
 @endsection
 
 @section('content')
@@ -49,7 +55,7 @@
                 <td>{{$item->id}}</td>
                 <td>{{$item->type}}</td>
                 <td>{{$item->name}}</td>
-                <td><img src="{{$item->img}}" alt="" width="200"></td>
+                <td><img src="{{asset($item->img)}}" alt="" width="200"></td>
                 <td>
                     <textarea name="" id="" cols="25" rows="5" style="text-align: start">{{$item->content}}</textarea>
                 </td>

@@ -19,7 +19,7 @@
            <div class="form-group">
                 <label for="img">圖片:</label>
                 <div>
-                    {{-- <img src="{{$productsData->img}}" alt="" width="200"><br> --}}
+                    <img src="{{$productsData->img}}" alt="" width="200"><br>
                     <input type="file" accept="image/*" id="img" name="img" value="{{$productsData->img}}">
                 </div>
             </div>
