@@ -27,25 +27,16 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        // $productData = $request->all();
-        // if($request->hasfile('img')){
 
 
-        //     // Storage::disk('myfile')->putfile('product', $file);
+        $productData = $request->all();
+        if($request->hasfile('img')){
+            $file = $request ->file('img');
+            $path = $this->fileUpload($file,'product');
+            $productData['img']=$path;
+        }
 
-
-        //     // $file = $request ->file('img');
-        //     // $path = $this->fileUpload($file,'product');
-        //     // $productData['img']=$path;
-        // }
-
-
-        Product::create([
-            'name'=>$request->name,
-            'price'=>$request->price,
-            'content'=>$request->content,
-            'img'=>$request->img
-        ]);
+        Product::create($productData);
 
         return redirect('/home');
     }
@@ -58,7 +49,12 @@ class ProductController extends Controller
 
     public function update(Request $request,$id)
     {
-
+        $productData = $request->all();
+        if($request->hasfile('img')){
+            $file = $request ->file('img');
+            $path = $this->fileUpload($file,'product');
+            $productData['img']=$path;
+        }
         Product::find($id)->update($request->except(['_token']));
         return redirect('/home');
     }
@@ -69,5 +65,25 @@ class ProductController extends Controller
 
 
         return redirect('/home');
+    }
+
+
+    private function fileUpload($file,$dir){
+        //防呆：資料夾不存在時將會自動建立資料夾，避免錯誤
+        if( ! is_dir('upload/')){
+            mkdir('upload/');
+        }
+        //防呆：資料夾不存在時將會自動建立資料夾，避免錯誤
+        if ( ! is_dir('upload/'.$dir)) {
+            mkdir('upload/'.$dir);
+        }
+        //取得檔案的副檔名
+        $extension = $file->getClientOriginalExtension();
+        //檔案名稱會被重新命名
+        $filename = strval(time().md5(rand(100, 200))).'.'.$extension;
+        //移動到指定路徑
+        move_uploaded_file($file, public_path().'/upload/'.$dir.'/'.$filename);
+        //回傳 資料庫儲存用的路徑格式
+        return '/upload/'.$dir.'/'.$filename;
     }
 }

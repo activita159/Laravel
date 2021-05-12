@@ -10,7 +10,8 @@
 <div class="containerrrr">
     <h1><p>{{$productsData->name}}</p></h1>
     <div class="date">
-        <p>{{$productsData->img}}</p>
+        <img src="{{$productsData->img}}" alt="" width="300">
+
         <p>NT${{$productsData->price}}</p>
     </div>
 

@@ -49,7 +49,7 @@
                 <td>{{$item->id}}</td>
                 <td>{{$item->type}}</td>
                 <td>{{$item->name}}</td>
-                <td>{{$item->img}}</td>
+                <td><img src="{{$item->img}}" alt="" width="200"></td>
                 <td>
                     <textarea name="" id="" cols="25" rows="5" style="text-align: start">{{$item->content}}</textarea>
                 </td>

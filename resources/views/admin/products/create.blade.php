@@ -6,7 +6,7 @@
 
 @section('main')
     <div class="container">
-        <form action="/admin/store" method="POST">
+        <form action="/admin/store" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="type">類型:</label>
@@ -18,7 +18,7 @@
            </div>
            <div class="form-group">
                 <label for="img">圖片:</label>
-                <input type="file" accept="image" id="img" name="img">
+                <input type="file" accept="image/*" id="img" name="img">
             </div>
             <div class="form-group">
                 <label for="content">簡介:</label>

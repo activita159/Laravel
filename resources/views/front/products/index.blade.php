@@ -19,7 +19,7 @@
 @foreach ($productsData as $item)
 <div class="card container" style="width: 18rem;">
     <a href="/details/{{$item->id}}" class="">
-        <img src="" class="card-img-top m-auto"  alt="" style="width: 200px;height:250px">
+        <img src="{{$item->img}}" class="card-img-top m-auto"  alt="" style="width: 200px">
     </a>
 
   <div class="card-body">
