@@ -32,7 +32,7 @@
     <a href="/admin/create">新增</a>
     <table id="myDataTalbe"  class="display"  >
         <thead>
-            
+
             <tr>
                 <th>#</th>
                 <th>名稱</th>
@@ -54,11 +54,11 @@
                 <td>NT$ {{$item->price}}</td>
                 <td>
                     <a href="/admin/edit/{{$item->id}}">Edit</a>
-                    <a href="">Delete</a>
-                    
+                    <a href="/admin/delete/{{$item->id}}">Delete</a>
+
                 </td>
             </tr>
-            
+
         </tbody>
         @endforeach
     </table>
@@ -70,7 +70,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <!--引用dataTables.js-->
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
- 
+
 <script type="text/javascript">
     $(function () {
 

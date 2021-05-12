@@ -1,0 +1,23 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    padding: 0;
+    margin: 0;
+    
+}
+main{
+    display: flex;
+    justify-content: center;
+}
+.containerrrr{
+    width: 70%;
+
+}
+.container .date{
+    display: flex;
+}
+/* footer{
+    position: absolute;
+    bottom: 0;
+} */

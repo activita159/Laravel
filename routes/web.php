@@ -14,7 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::get('/', 'ProductController@index');
+
+Route::get('/details/{id}','ProductController@details');
+
 
 
 
@@ -22,17 +27,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-
 Route::prefix('admin')->group(function () {
-    
+
     Route::get('/create', 'ProductController@create');
 
     Route::post('/store', 'ProductController@store');
-        
+
     Route::get('/edit/{id}','ProductController@edit');
 
     Route::post('/update/{id}', 'ProductController@update');
+
+    Route::get('/delete/{id}','ProductController@delete');
 });
 
 

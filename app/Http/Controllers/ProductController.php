@@ -14,6 +14,12 @@ class ProductController extends Controller
         return view('front.products.index',compact('productsData'));
     }
 
+    public function details($id)
+    {
+        $productsData = Product::find($id);
+        return view('front.products.details',compact('productsData'));
+    }
+
     public function create()
     {
         return view('admin.products.create');
@@ -27,7 +33,7 @@ class ProductController extends Controller
             'content'=>$request->content,
             'img'=>$request->img
         ]);
-       
+
         return redirect('/home');
     }
 
@@ -39,8 +45,16 @@ class ProductController extends Controller
 
     public function update(Request $request,$id)
     {
-        
+
         Product::find($id)->update($request->except(['_token']));
-        return redirect('home');
+        return redirect('/home');
+    }
+
+    public function delete($id)
+    {
+        Product::find($id)->delete();
+
+
+        return redirect('/home');
     }
 }
