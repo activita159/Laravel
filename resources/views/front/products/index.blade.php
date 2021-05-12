@@ -3,8 +3,12 @@
 @section('css')
     <style>
       main{
-        display: flex;
-        flex-wrap: wrap;
+
+        display:grid;
+        grid-template-columns: repeat(5, 1fr);
+        /* grid-template-columns:1fr 1fr 1fr 1fr 1fr; */
+        justify-items: center;
+        /* flex-wrap: wrap; */
         /* justify-content: space-between; */
       }
 
@@ -14,15 +18,14 @@
 @section('main')
 @foreach ($productsData as $item)
 <div class="card container" style="width: 18rem;">
-    <a href="/details/{{$item->id}}" class="m-auto">
+    <a href="/details/{{$item->id}}" class="">
         <img src="" class="card-img-top m-auto"  alt="" style="width: 200px;height:250px">
     </a>
-  <div class="card-body">
 
+  <div class="card-body">
     <h5 class="card-title name">{{$item->name}}</h5>
     <p class="card-text content">{{$item->content}}</p>
     <p class="price">NT${{$item->price}}</p>
-
     <a href="/details/{{$item->id}}" class="btn btn-primary" >Go Fuck Yourself</a>
   </div>
 </div>

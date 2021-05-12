@@ -35,6 +35,7 @@
 
             <tr>
                 <th>#</th>
+                <th>類型</th>
                 <th>名稱</th>
                 <th>圖片</th>
                 <th>簡介</th>
@@ -46,6 +47,7 @@
         <tbody>
             <tr>
                 <td>{{$item->id}}</td>
+                <td>{{$item->type}}</td>
                 <td>{{$item->name}}</td>
                 <td>{{$item->img}}</td>
                 <td>

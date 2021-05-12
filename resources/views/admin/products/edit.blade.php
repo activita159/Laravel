@@ -1,13 +1,17 @@
 @extends('layouts.app')
 
 @section('css')
-    
+
 @endsection
 
 @section('main')
     <div class="container">
         <form action="/admin/update/{{$productsData->id}}" method="POST">
             @csrf
+            <div class="form-group">
+                <label for="type">類型:</label>
+                <input type="text" id="type" name="type" value="{{$productsData->type}}">
+            </div>
            <div class="form-group">
                <label for="name">名稱:</label>
                <input type="text" id="name" name="name" value="{{$productsData->name}}">
@@ -25,11 +29,11 @@
                 <input type="text" id="price" name="price" value='{{$productsData->price}}'>
             </div>
             <button type="submit">送出:</button>
-           
+
         </form>
     </div>
 @endsection
 
 @section('js')
-    
+
 @endsection

@@ -27,6 +27,19 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        // $productData = $request->all();
+        // if($request->hasfile('img')){
+
+
+        //     // Storage::disk('myfile')->putfile('product', $file);
+
+
+        //     // $file = $request ->file('img');
+        //     // $path = $this->fileUpload($file,'product');
+        //     // $productData['img']=$path;
+        // }
+
+
         Product::create([
             'name'=>$request->name,
             'price'=>$request->price,
