@@ -26,6 +26,15 @@ class TypeController extends Controller
         Type::create($typesData);
         return Redirect ('/admin_type');
     }
+    public function edit($id)
+    {
+        $typesData=Type::find($id);
+        return view('admin.products.type.edit',compact('typesData'));
+    }
+    public function update(Request $request,$id)
+    {
+        dd($request,$id);
+    }
 
 
 }
