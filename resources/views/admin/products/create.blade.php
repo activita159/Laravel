@@ -9,8 +9,8 @@
         <form action="/admin/store" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label for="type">類型:</label>
-                <input type="text" id="type" name="type">
+                <label for="type_id">類型:</label>
+                <input type="text" id="type_id" name="type_id">
             </div>
            <div class="form-group">
                <label for="name">名稱:</label>

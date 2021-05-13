@@ -27,8 +27,6 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-
-
         $productData = $request->all();
         if($request->hasfile('img')){
             $file = $request ->file('img');
@@ -49,13 +47,16 @@ class ProductController extends Controller
 
     public function update(Request $request,$id)
     {
-        // $productData = $request->all();
-        // if($request->hasfile('img')){
-        //     $file = $request ->file('img');
-        //     $path = $this->fileUpload($file,'product');
-        //     $productData['img']=$path;
-        // }
-        Product::find($id)->update($request->except(['_token']));
+        $productData = $request->all(); 
+        if($request->hasfile('img')){
+            $file = $request ->file('img');
+            $path = $this->fileUpload($file,'product');
+            $productData['img']=$path;
+        }
+
+        Product::find($id)->update($productData);
+
+        // Product::find($id)->update($request->all());
         return redirect('/home');
     }
 

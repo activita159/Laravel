@@ -6,7 +6,7 @@
 
 @section('main')
     <div class="container">
-        <form action="/admin/update/{{$productsData->id}}" method="POST">
+        <form action="/admin/update/{{$productsData->id}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="type">類型:</label>

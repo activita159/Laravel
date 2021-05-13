@@ -53,7 +53,7 @@
         <tbody>
             <tr>
                 <td>{{$item->id}}</td>
-                <td>{{$item->type}}</td>
+                <td>{{$item->type_id}}</td>
                 <td>{{$item->name}}</td>
                 <td><img src="{{asset($item->img)}}" alt="" width="200"></td>
                 <td>
