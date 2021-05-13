@@ -47,7 +47,7 @@ class ProductController extends Controller
 
     public function update(Request $request,$id)
     {
-        $productData = $request->all(); 
+        $productData = $request->all();
         if($request->hasfile('img')){
             $file = $request ->file('img');
             $path = $this->fileUpload($file,'product');
@@ -62,6 +62,7 @@ class ProductController extends Controller
 
     public function delete($id)
     {
+        
         Product::find($id)->delete();
 
 

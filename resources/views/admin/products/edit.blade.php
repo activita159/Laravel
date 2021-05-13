@@ -10,7 +10,7 @@
             @csrf
             <div class="form-group">
                 <label for="type">類型:</label>
-                <input type="text" id="type" name="type" value="{{$productsData->type}}">
+                <input type="text" id="type" name="type" value="{{$productsData->type_id}}">
             </div>
            <div class="form-group">
                <label for="name">名稱:</label>

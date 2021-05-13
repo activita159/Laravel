@@ -47,5 +47,20 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/delete/{id}','ProductController@delete');
 });
 
+Route::prefix('admin_type')->group(function () {
+
+    Route::get('/create', 'ProductController@create');
+
+    Route::post('/store', 'ProductController@store');
+
+    Route::get('/edit/{id}','ProductController@edit');
+
+    Route::post('/update/{id}', 'ProductController@update');
+
+    Route::get('/delete/{id}','ProductController@delete');
+});
+
+
+
 
 

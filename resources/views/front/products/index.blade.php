@@ -24,6 +24,7 @@
 
   <div class="card-body">
     <h5 class="card-title name">{{$item->name}}</h5>
+    <p class="card-text type">{{$item->type_id}}</p>
     <p class="card-text content">{{$item->content}}</p>
     <p class="price">NT${{$item->price}}</p>
     <a href="/details/{{$item->id}}" class="btn btn-primary" >Go Fuck Yourself</a>
