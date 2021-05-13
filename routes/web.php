@@ -48,16 +48,17 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 });
 
 Route::prefix('admin_type')->group(function () {
+    Route::get('/home', 'TypeController@index');
 
-    Route::get('/create', 'ProductController@create');
+    Route::get('/create', 'TypeController@create');
 
-    Route::post('/store', 'ProductController@store');
+    Route::post('/store', 'TypeController@store');
 
-    Route::get('/edit/{id}','ProductController@edit');
+    Route::get('/edit/{id}','TypeController@edit');
 
-    Route::post('/update/{id}', 'ProductController@update');
+    Route::post('/update/{id}', 'TypeController@update');
 
-    Route::get('/delete/{id}','ProductController@delete');
+    Route::get('/delete/{id}','TypeController@delete');
 });
 
 
