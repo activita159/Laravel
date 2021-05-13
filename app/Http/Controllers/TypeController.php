@@ -33,7 +33,14 @@ class TypeController extends Controller
     }
     public function update(Request $request,$id)
     {
-        dd($request,$id);
+        $typesData = $request->all();
+        Type::find($id)->update($typesData);
+        return redirect('/admin_type');
+    }
+    public function delete($id)
+    {
+        Type::find($id)->delete();
+        return redirect('/admin_type');
     }
 
 

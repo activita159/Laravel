@@ -41,7 +41,7 @@
 
             <tr>
                 <th>id</th>
-                <th>名稱</th>
+                <th>類別名稱</th>
                 <th>ActionButton</th>
             </tr>
         </thead>
