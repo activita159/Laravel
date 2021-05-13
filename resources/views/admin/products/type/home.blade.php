@@ -49,7 +49,7 @@
         <tbody>
             <tr>
                 <td>{{$item->id}}</td>
-                <td>{{$item->name}}</td>
+                <td>{{$item->type_name}}</td>
 
                 <td>
                     <a href="/admin_type/edit/{{$item->id}}">Edit</a>

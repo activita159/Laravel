@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class TypeController extends Controller
 {
@@ -22,8 +23,8 @@ class TypeController extends Controller
     public function store(Request $request)
     {
         $typesData = $request->all();
-        // dd($typesData);
         Type::create($typesData);
+        return Redirect ('/admin_type');
     }
 
 

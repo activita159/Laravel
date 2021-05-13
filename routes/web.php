@@ -48,7 +48,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 });
 
 Route::prefix('admin_type')->group(function () {
-    Route::get('/home', 'TypeController@index');
+    Route::get('/', 'TypeController@index');
 
     Route::get('/create', 'TypeController@create');
 
