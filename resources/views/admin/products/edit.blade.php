@@ -1,7 +1,35 @@
 @extends('layouts.app')
 
 @section('css')
+<style>
+    .img-area{
+        display: flex;
+        flex-wrap: wrap;
+        
+    }
+    .img{
 
+        width: 100px;
+        height: 100px;
+        background-size: cover;
+        background-position: center;
+        margin-right:15px;
+        margin-top:10px;
+        border: 1px solid black;
+        position: relative;
+    }
+    .del-btn{
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        border-radius: 50%;
+        text-align: center;
+        position: absolute;
+        right: 0;
+        transform:translate(30%,-50%);
+        cursor: pointer;
+    }
+</style>
 @endsection
 
 @section('main')
@@ -31,10 +59,10 @@
                             <div class="img" style="background-image: url('{{asset($img->img)}}')">
                                 <div class="del-btn" data-id="{{$img->id}}">X</div>
                             </div>
-                        <img src="{{$img->img}}" alt="123" width="200"><br>
-                        <input type="file" accept="image/*" id="img" name="img" value="{{$productsData->img}}">
+                        {{-- <img src="{{$img->img}}" alt="123" width="200"><br> --}}
                         @endforeach
                     </div>
+                    <input type="file" accept="image/*" id="img" name="img" value="{{$productsData->img}}">
                 </div>
             </div>
             <div class="form-group">

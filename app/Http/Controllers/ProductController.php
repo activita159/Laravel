@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Productimg;
+use App\Type;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -23,7 +24,9 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('admin.products.create');
+        $productTypes = Type::get();
+
+        return view('admin.products.create',compact('productTypes'));
     }
 
     public function store(Request $request)

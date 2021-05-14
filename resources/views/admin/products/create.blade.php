@@ -10,7 +10,13 @@
             @csrf
             <div class="form-group">
                 <label for="type_id">類型:</label>
-                <input type="text" id="type_id" name="type_id">
+                {{-- <input type="text" id="type_id" name="type_id"> --}}
+                <select name="type_id" id="type_id" required>
+                    @foreach ($productTypes as $productType)
+                        <option value="{{$productType->id}}">{{$productType->type_name}}</option>
+                        
+                    @endforeach
+                </select>
             </div>
            <div class="form-group">
                <label for="name">名稱:</label>

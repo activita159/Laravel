@@ -55,8 +55,10 @@
                 <td>{{$item->id}}</td>
                 <td>{{$item->type_id}}</td>
                 <td>{{$item->name}}</td>
-                <td><img src="{{asset($item->img)}}" alt="" width="200"></td>
-                
+                <td><img src="{{asset($item->img)}}" alt="" width="200">
+                    
+                </td>
+
                 <td>
                     <textarea name="" id="" cols="20" rows="5" style="text-align: start">{{$item->content}}</textarea>
                 </td>

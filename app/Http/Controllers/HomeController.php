@@ -25,6 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         $productsData = Product::get();
+        // dd($productsData);
         return view('home', compact('productsData'));
         
     }
