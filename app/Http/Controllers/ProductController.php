@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Productimg;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -27,6 +28,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        
         $productData = $request->all();
         if($request->hasfile('img')){
             $file = $request ->file('img');
@@ -34,9 +36,20 @@ class ProductController extends Controller
             $productData['img']=$path;
         }
 
-        Product::create($productData);
+        $product = Product::create($productData);
 
-        return redirect('/home');
+        $imgs = $request->file('imgs');
+        
+        foreach($imgs as $img){
+            $path = $this->fileUpload($file,'product');
+                        
+            Productimg::create([
+                'product_id' => $product->id,
+                'img' => $path
+            ]);
+        }
+        
+        return redirect('admin');
     }
 
     public function edit($id)
@@ -57,7 +70,7 @@ class ProductController extends Controller
         Product::find($id)->update($productData);
 
         // Product::find($id)->update($request->all());
-        return redirect('/home');
+        return redirect('admin');
     }
 
     public function delete($id)
@@ -66,7 +79,7 @@ class ProductController extends Controller
         Product::find($id)->delete();
 
 
-        return redirect('/home');
+        return redirect('admin');
     }
 
 

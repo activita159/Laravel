@@ -28,7 +28,6 @@ Route::get('/details/{id}','ProductController@details');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 // Route::middleware('auth')->group(function () {
 
@@ -48,6 +47,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::get('/delete/{id}','ProductController@delete');
 });
+
 
 Route::prefix('admin_type')->group(function () {
     Route::get('/', 'TypeController@index');

@@ -17,8 +17,12 @@
                <input type="text" id="name" name="name">
            </div>
            <div class="form-group">
-                <label for="img">圖片:</label>
-                <input type="file" accept="image/*" id="img" name="img">
+                <label for="img">主要圖片:</label>
+                <input type="file" accept="image/*" id="img" name="img" required>
+            </div>
+            <div class="form-group">
+                <label for="imgs">其他圖片:</label>
+                <input type="file" accept="image/*" id="imgs" name="imgs" multiple required>
             </div>
             <div class="form-group">
                 <label for="content">簡介:</label>
