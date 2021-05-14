@@ -46,6 +46,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('/update/{id}', 'ProductController@update');
 
     Route::get('/delete/{id}','ProductController@delete');
+
+    Route::post('/delete_img','ProductController@delete_img');
 });
 
 

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+    @extends('layouts.app')
 
 
 @section('css')
@@ -56,8 +56,9 @@
                 <td>{{$item->type_id}}</td>
                 <td>{{$item->name}}</td>
                 <td><img src="{{asset($item->img)}}" alt="" width="200"></td>
+                
                 <td>
-                    <textarea name="" id="" cols="25" rows="5" style="text-align: start">{{$item->content}}</textarea>
+                    <textarea name="" id="" cols="20" rows="5" style="text-align: start">{{$item->content}}</textarea>
                 </td>
                 <td>NT$ {{$item->price}}</td>
                 <td>

@@ -39,9 +39,9 @@ class ProductController extends Controller
         $product = Product::create($productData);
 
         $imgs = $request->file('imgs');
-        
+       
         foreach($imgs as $img){
-            $path = $this->fileUpload($file,'product');
+            $path = $this->fileUpload($img,'product');
                         
             Productimg::create([
                 'product_id' => $product->id,
@@ -54,7 +54,7 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $productsData = Product::find($id);
+        $productsData = Product::with('images')->find($id);
         return view('admin.products.edit',compact('productsData'));
     }
 
@@ -81,6 +81,11 @@ class ProductController extends Controller
 
         return redirect('admin');
     }
+
+    // public function delete_img(Request $request)
+    // {
+        
+    // }
 
 
     private function fileUpload($file,$dir){

@@ -22,7 +22,7 @@
             </div>
             <div class="form-group">
                 <label for="imgs">其他圖片:</label>
-                <input type="file" accept="image/*" id="imgs" name="imgs" multiple required>
+                <input type="file" accept="image/*" id="imgs" name="imgs[]" multiple required>
             </div>
             <div class="form-group">
                 <label for="content">簡介:</label>
