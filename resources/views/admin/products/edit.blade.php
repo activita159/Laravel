@@ -59,10 +59,9 @@
                             <div class="img" style="background-image: url('{{asset($img->img)}}')">
                                 <div class="del-btn" data-id="{{$img->id}}">X</div>
                             </div>
-                        {{-- <img src="{{$img->img}}" alt="123" width="200"><br> --}}
                         @endforeach
                     </div>
-                    <input type="file" accept="image/*" id="img" name="img" value="{{$productsData->img}}">
+                    <input type="file" accept="image/*" id="imgs" name="imgs[]" value="{{$productsData->img}}">
                 </div>
             </div>
             <div class="form-group">

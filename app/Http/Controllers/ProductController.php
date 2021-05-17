@@ -63,6 +63,7 @@ class ProductController extends Controller
 
     public function update(Request $request,$id)
     {
+   
         $productData = $request->all();
         if($request->hasfile('img')){
             $file = $request ->file('img');
@@ -83,6 +84,11 @@ class ProductController extends Controller
 
 
         return redirect('admin');
+    }
+
+    public function delete_img(Type $var = null)
+    {
+        # code...
     }
 
     // public function delete_img(Request $request)

@@ -5,7 +5,7 @@
       main{
 
         display:grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         /* grid-template-columns:1fr 1fr 1fr 1fr 1fr; */
         justify-items: center;
         /* flex-wrap: wrap; */
@@ -18,7 +18,7 @@
 @section('main')
 @foreach ($productsData as $item)
 <div class="card container" style="width: 18rem;">
-    <a href="/details/{{$item->id}}" class="">
+    <a href="/details/{{$item->id}}" class="m-auto" >
         <img src="{{$item->img}}" class="card-img-top m-auto"  alt="" style="width: 200px">
     </a>
 
