@@ -212,9 +212,9 @@
                 </button>
               </a>
 
-              <a href="/shopping_cart/payment/check" class="ml-auto">
+              <button class="ml-auto">
                 下一步
-              </a>
+              </button>
             </div>
           </form>
         </section>

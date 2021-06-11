@@ -58,12 +58,18 @@ Route::prefix('admin_type')->group(function () {
 
 Route::prefix('/shopping_cart')->group(function () {
     Route::post('/add', 'ShoppingCartController@add');
-    Route::post('/update', 'ShoppingCartController@update');
-    Route::post('/delete', 'ShoppingCartController@delete');
-    Route::get('/content', 'ShoppingCartController@content');
-    Route::get('/list', 'ShoppingCartController@list');
-    Route::get('/payment', 'ShoppingCartController@payment');
+
+    Route::middleware('auth')->group(function (){
+        Route::post('/update', 'ShoppingCartController@update');
+        Route::post('/delete', 'ShoppingCartController@delete');
+        Route::get('/content', 'ShoppingCartController@content');
+        Route::get('/list', 'ShoppingCartController@list');
+        Route::get('/payment', 'ShoppingCartController@payment');
     
-    Route::get('/payment/check', 'ShoppingCartController@paymentCheck');
-    // Route::post('/payment/check', 'ShoppingCartController@paymentCheck');
+    
+        Route::post('/payment/check', 'ShoppingCartController@paymentCheck');  //POST一定要有button(因為 'submit')
+
+        Route::post('/information/check', 'ShoppingCartController@informationCheck');
+    });
+
 });

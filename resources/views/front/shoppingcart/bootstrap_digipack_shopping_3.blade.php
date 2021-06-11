@@ -21,6 +21,7 @@
     .containerL {
       margin-left: 10px;
     }
+
   </style>
 </head>
 
@@ -123,73 +124,95 @@
           <div class="col"></div>
           <div class="col" style="text-align: center;">完成訂購</div>
         </div>
-        <div class="container" style="padding: 0;">
-          <hr>
-          <p style="font-size: 24px;">寄送資料</p>
-        </div>
-        <div class="container" style="padding: 0;">
-          <p>
-          <h5>姓名</h5><input type="text" name="name" style="width:100%;height:38px"></p>
-          <p>
-          <h5>電話</h5><input type="text" name="phone" style="width:100%;height:38px"></p>
-          <p>
-          <h5>Email</h5><input type="text" name="mail" style="width:100%;height:38px"></p>
-          <h5>地址</h5>
-          <p style="display: flex;flex-wrap: wrap;"><input type="text" style="width:48%;height:38px"><input type="text"
-              style="width:48%;height:38px;margin-left:auto;">
-            <input type="text" style="width:100%;height:35px;margin-top: 5px;margin-bottom:30px">
-          </p>
-
-        </div>
 
 
+        {{-- 寄送資料 --}}
 
-        <hr>
-        <div class="container" style="display: flex;flex-direction: column;align-items: flex-end;padding:0;">
-          <div class="container"
-            style="width: 236px;text-align: end;margin: 0;padding:0;display: flex;justify-content: space-between;">
-            <span>數量:</span>
-            <span>
-              <h5>{{ \Cart::getTotalQuantity() }}
-            </span>
+        <form action="/shopping_cart/information/check" method="POST">
+          @csrf
+          <div class="container" style="padding: 0;">
+            <hr>
+            <p style="font-size: 24px;">寄送資料</p>
           </div>
+          <div class="container" style="padding: 0;">
+            <p>
+            <h5>姓名</h5><input type="text" name="name" style="width:100%;height:38px"></p>
+            <p>
+            <h5>電話</h5><input type="text" name="phone" style="width:100%;height:38px"></p>
+            <p>
+            <h5>Email</h5><input type="text" name="email" style="width:100%;height:38px"></p>
+            <h5>地址</h5>
 
-          @php
-            $subTotal = \Cart::getSubTotal();
-            $shipment = \Cart::getSubTotal() > 1000 ? 0 : 60;
-          @endphp
+            <div class="city-selector-set row flex-nowrap mb-3">
+              <div class="col">
+                <!-- 縣市選單 -->
+                <select class="form-control form-control-lg county" name="county"></select>
+              </div>
+              <div class="col">
+                <!-- 區域選單 -->
+                <select class="form-control form-control-lg district" name="district"></select>
+              </div>
+              <div class="col">
+                <!-- 郵遞區號欄位 (建議加入 readonly 屬性，防止修改) -->
+                <input class="zipcode w-100" type="text" readonly placeholder="郵遞區號" name="zipcode">
+              </div>
+              <div>
+                <input class="address" type="text" placeholder="地址" name="address">
+              </div>
+            </div>
 
-          <div class="container"
-            style="width: 236px;text-align: end;margin: 0;padding:0;display: flex;justify-content: space-between;">
-            <span>小計:</span>
-            <span>
-              <h5>${{ number_format($subTotal) }}
-            </span>
-          </div>
-          <div class="container"
-            style="width: 236px;text-align: end;margin: 0;padding:0;display: flex;justify-content: space-between;">
-            <span>運費:</span>
-            <span>
-              <h5>${{ number_format($shipment) }}
-            </span>
-          </div>
-          <div class="container"
-            style="width: 236px;text-align: end;margin: 0;padding:0;display: flex;justify-content: space-between;">
-            <span>總計:</span>
-            <span>
-              <h5>${{ number_format($subTotal + $shipment) }}
-            </span>
-          </div>
-        </div>
-        <hr>
-        <div class="container d-flex" style="padding: 0;">
-          <a href="./bootstrap_digipack_shopping_2.html">
-            <button class="button-prev" style="width:144px;background-color: rgb(37 , 99, 235);color:white">上一步</button>
-          </a>
-          <a href="./bootstrap_digipack_shopping_4.html" class="ml-auto">
-            <button class="button-next" style="width:144px;background-color: rgb(37 , 99, 235);color:white">前往付款</button>
-          </a>
-        </div>
+            {{-- 寄送資料 --}}
+
+
+            <hr>
+            <div class="container" style="display: flex;flex-direction: column;align-items: flex-end;padding:0;">
+              <div class="container"
+                style="width: 236px;text-align: end;margin: 0;padding:0;display: flex;justify-content: space-between;">
+                <span>數量:</span>
+                <span>
+                  <h5>{{ \Cart::getTotalQuantity() }}
+                </span>
+              </div>
+
+              @php
+                $subTotal = \Cart::getSubTotal();
+                $shipment = \Cart::getSubTotal() > 1000 ? 0 : 60;
+              @endphp
+
+              <div class="container"
+                style="width: 236px;text-align: end;margin: 0;padding:0;display: flex;justify-content: space-between;">
+                <span>小計:</span>
+                <span>
+                  <h5>${{ number_format($subTotal) }}
+                </span>
+              </div>
+              <div class="container"
+                style="width: 236px;text-align: end;margin: 0;padding:0;display: flex;justify-content: space-between;">
+                <span>運費:</span>
+                <span>
+                  <h5>${{ number_format($shipment) }}
+                </span>
+              </div>
+              <div class="container"
+                style="width: 236px;text-align: end;margin: 0;padding:0;display: flex;justify-content: space-between;">
+                <span>總計:</span>
+                <span>
+                  <h5>${{ number_format($subTotal + $shipment) }}
+                </span>
+              </div>
+            </div>
+            <hr>
+            <div class="container d-flex" style="padding: 0;">
+              <a href="./bootstrap_digipack_shopping_2.html">
+                <button class="button-prev"
+                  style="width:144px;background-color: rgb(37 , 99, 235);color:white">上一步</button>
+              </a>
+              <a href="/shopping_cart/payment" class="ml-auto">
+                <button class="button-next"
+                  style="width:144px;background-color: rgb(37 , 99, 235);color:white">前往付款</button>
+              </a>
+            </div>
+        </form>
       </div>
 
     </div>
@@ -209,15 +232,30 @@
       </div>
     </div>
   </footer>
+
+  <script src="{{ asset('js/tw-city-selector.js') }}"></script>
+
+  <script>
+    new TwCitySelector({
+      el: '.city-selector-set',
+      elCounty: '.county', // 在 el 裡查找 element
+      elDistrict: '.district', // 在 el 裡查找 element
+      elZipcode: '.zipcode' // 在 el 裡查找 element
+    });
+
+  </script>
+
+
+
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-    crossorigin="anonymous"></script>
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
-    integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
-    crossorigin="anonymous"></script>
+    integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous">
+  </script>
 </body>
 
 </html>
