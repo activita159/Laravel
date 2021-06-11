@@ -69,12 +69,14 @@
             <a class="nav-link" href="#">Contact</a>
           </li>
           <li>
-            <img src="{{ asset('./img/shop.jpg') }}" width="36px" height="30px" alt="" style="margin-right:20px;">
+           <a href="/shopping_cart/list">
+            <img src="{{ asset('./img/shop.jpg') }}" width="36px" height="30px" alt=""  style="margin-right:20px;">
+             </a> 
           </li>
           <li>
             <img src="{{ asset('./img/login.jpg') }}" id="Link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" width="36px" height="34px" alt="">
             <div class="dropdown-menu" aria-labelledby="Link" style="width: 100px;position: absolute;top:90%;left: 85%;">
-              <a class="dropdown-item" href="/login" style="text-align: center;">Login</a>
+              <a class="dropdown-item" href="/admin" style="text-align: center;">Login</a>
             </div>
           </li>
         </ul>

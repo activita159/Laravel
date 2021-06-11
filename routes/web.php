@@ -19,19 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'ProductController@index');
 
-Route::get('/details/{id}','ProductController@details');
-
-
-
-//admin news  admin products
-
+Route::get('/details/{id}', 'ProductController@details');
 
 Auth::routes();
 
-
-// Route::middleware('auth')->group(function () {
-
-// });
 
 Route::prefix('admin')->middleware('auth')->group(function () {
 
@@ -41,13 +32,13 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::post('/store', 'ProductController@store');
 
-    Route::get('/edit/{id}','ProductController@edit');
+    Route::get('/edit/{id}', 'ProductController@edit');
 
     Route::post('/update/{id}', 'ProductController@update');
 
-    Route::get('/delete/{id}','ProductController@delete');
+    Route::get('/delete/{id}', 'ProductController@delete');
 
-    Route::post('/delete_img','ProductController@delete_img');
+    Route::post('/delete_img', 'ProductController@delete_img');
 });
 
 
@@ -58,14 +49,21 @@ Route::prefix('admin_type')->group(function () {
 
     Route::post('/store', 'TypeController@store');
 
-    Route::get('/edit/{id}','TypeController@edit');
+    Route::get('/edit/{id}', 'TypeController@edit');
 
     Route::post('/update/{id}', 'TypeController@update');
 
-    Route::get('/delete/{id}','TypeController@delete');
+    Route::get('/delete/{id}', 'TypeController@delete');
 });
 
-
-
-
-
+Route::prefix('/shopping_cart')->group(function () {
+    Route::post('/add', 'ShoppingCartController@add');
+    Route::post('/update', 'ShoppingCartController@update');
+    Route::post('/delete', 'ShoppingCartController@delete');
+    Route::get('/content', 'ShoppingCartController@content');
+    Route::get('/list', 'ShoppingCartController@list');
+    Route::get('/payment', 'ShoppingCartController@payment');
+    
+    Route::get('/payment/check', 'ShoppingCartController@paymentCheck');
+    // Route::post('/payment/check', 'ShoppingCartController@paymentCheck');
+});

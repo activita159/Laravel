@@ -47,8 +47,8 @@
            <div class="form-group">
                 <label for="img">主要圖片:</label>
                 <div>
-                    <img src="{{$productsData->img}}" alt="" width="200"><br>
-                    <input type="file" accept="image/*" id="img" name="img" value="{{$productsData->img}}">
+                    <img src="{{asset($productsData->img)}}" alt="" width="200"><br>
+                    <input type="file" accept="image/*" id="img" name="img" class="form-control" >
                 </div>
             </div>
             <div class="form-group">
@@ -56,12 +56,12 @@
                 <div>
                     <div class="img-area">
                         @foreach ($productsData->images as $img)
-                            <div class="img" style="background-image: url('{{asset($img->img)}}')">
+                            <div class="img" id="img_{{$img->id}}" style="background-image: url('{{asset($img->img)}}')">
                                 <div class="del-btn" data-id="{{$img->id}}">X</div>
                             </div>
                         @endforeach
                     </div>
-                    <input type="file" accept="image/*" id="imgs" name="imgs[]" value="{{$productsData->img}}">
+                    <input type="file" accept="image/*" id="imgs" name="imgs[]" class="form-control"  multiple="">
                 </div>
             </div>
             <div class="form-group">
@@ -80,20 +80,22 @@
 
 @section('js')
     <script>
-        //select all delete btn
+        //選到所有的刪除按鈕
         var btns = document.querySelectorAll('.del-btn');
-        //set addlistener to all delete btn
+        //將所有刪除按鈕綁定監聽事件
         btns.forEach(function(btn){
             btn.addEventListener('click',function () {
+                //按下按鈕後要發生的事情
                 if(confirm('sure?')){
+                    //確認要刪除後發生的事情
                     var imgId= this.getAttribute('data-id')
-                    var formData = new FormData;
+                    var formData = new FormData();
                     formData.append('id',imgId);
                     formData.append('_token','{{csrf_token()}}');
                     var delbtn = this;
                     fetch('/admin/delete_img',{
                         method:'POST',
-                        body:formdata
+                        body: formData
                     })
                     .then(function (response){
                         return response.text();
@@ -101,6 +103,7 @@
                     .then(function (result) {
                         if(result == 'success'){
                             delbtn.parentElement.remove();
+                            // document.querySelector('#img_'+imgId).remove();
                         }
                     })
                     // .catch(error=>console.error('Error:', error))

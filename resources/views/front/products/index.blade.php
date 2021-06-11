@@ -27,12 +27,51 @@
     <p class="card-text type">{{$item->type_id}}</p>
     <p class="card-text content">{{$item->content}}</p>
     <p class="price">NT${{$item->price}}</p>
-    <a href="/details/{{$item->id}}" class="btn btn-primary" >Go Fuck Yourself</a>
+    <a href="/details/{{$item->id}}" class="btn btn-primary" >detail</a>
+    <button class="btn btn-primary add" data-id="{{$item->id}}" style="width: 100%">add to shoppingcart</button>
   </div>
 </div>
 @endforeach
 @endsection
 
 @section('js')
+  <script>
+    document.querySelectorAll('.add').forEach(function (addBtn) {
+      console.log(addBtn);
+      addBtn.addEventListener('click',function () {
+        var productId = this.getAttribute('data-id');
 
+        var formData = new FormData();
+        formData.append('_token','{{csrf_token()}}');
+        formData.append('productId',productId);
+
+        fetch('/shopping_cart/add',{
+          'method':'POST',
+          'body':formData
+        })
+        .then(function (response) {
+          return response.text()
+        })
+        .then(function (data) {
+          console.log(data);
+          if(data == 'success'){
+            console.log("8888")
+          }
+        })
+
+      })
+    })
+  </script>
+
+
+
+@if (Session::get('message'))
+  <script>
+    swal(
+      icon:'warning',
+      title: '{{Session::get('message')}}'
+    )
+  </script>
+  
+@endif
 @endsection

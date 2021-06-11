@@ -7,7 +7,7 @@
 
 
 @section('main')
-<div class="containerrrr">
+<div class="containerrrr d-flex">
     <h1><p>{{$productsData->name}}</p></h1>
     <div class="date">
         <img src="{{$productsData->img}}" alt="" width="300">
@@ -16,6 +16,7 @@
     </div>
 
     <p>{{$productsData->content}}</p>
+    <a href="#" style="margin-left: auto">加入購物車</a>
 </div>
 @endsection
 {{-- -- --}}
